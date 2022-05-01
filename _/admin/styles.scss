@@ -1,0 +1,86 @@
+#wpwrap{
+  background: #f2f6fc;
+  min-height: calc(100vh - 32px);
+}
+div#wpbody-content > .notice {
+  display: none;
+}
+
+
+#bc-app{
+  #bc-content{
+    .content-featured {
+      color: #fff;
+      font-size: 30px;
+      background-color: #0061f2 !important;
+      background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, .8) 100%) !important;
+
+      h2{
+        color: #fff;
+      }
+
+      .light {color: #ffffff73;}
+
+      .sub-title{
+        font-size: 14px;
+      }
+    }
+
+    .table, .pagination, .form-control, .btn {
+      font-size: 12px;
+    }
+  }
+}
+
+// Where
+.btn.move{
+  cursor: move;
+}
+.bc-transition{
+  transition: all .3s;
+}
+// Where
+
+.card{
+  padding: 0;
+  max-width: initial;
+  box-shadow: 0 0.15rem 1.75rem #21283226;
+
+  .badge{
+    color: white;
+  }
+  .btn-group-sm>.btn, .btn-sm{
+    font-size: 11px;
+  }
+  .card-header {
+    color: #0061f2;
+  }
+}
+
+.bc-smart-table-wrap{
+
+  .bc-smart-table{
+    .skeleton span {
+      width: calc(100% - 5px);
+      height: 24px;
+      margin: 5px 0;
+      border-radius: 3px;
+      background-image: linear-gradient( 90deg,#ddd 0,#e8e8e8 40px,#ddd 80px);
+      background-size: 600px;
+      animation: shine-lines-table 1.6s infinite linear;
+      display: inline-block;
+      min-width: 15px;
+    }
+
+    td{
+      vertical-align: middle;
+    }
+    td.sm{ width: 100px; }
+    td.xs{ width: 50px; }
+    td.xss{ width: 25px; }
+
+    tbody{
+      tr {cursor: move;}
+    }
+  }
+}

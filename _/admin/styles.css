@@ -1,0 +1,79 @@
+#wpwrap {
+  background: #f2f6fc;
+  min-height: calc(100vh - 32px);
+}
+
+div#wpbody-content > .notice {
+  display: none;
+}
+
+#bc-app #bc-content .content-featured {
+  color: #fff;
+  font-size: 30px;
+  background-color: #0061f2 !important;
+  background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 0.8) 100%) !important;
+}
+#bc-app #bc-content .content-featured h2 {
+  color: #fff;
+}
+#bc-app #bc-content .content-featured .light {
+  color: rgba(255, 255, 255, 0.4509803922);
+}
+#bc-app #bc-content .content-featured .sub-title {
+  font-size: 14px;
+}
+#bc-app #bc-content .table, #bc-app #bc-content .pagination, #bc-app #bc-content .form-control, #bc-app #bc-content .btn {
+  font-size: 12px;
+}
+
+.btn.move {
+  cursor: move;
+}
+
+.bc-transition {
+  transition: all 0.3s;
+}
+
+.card {
+  padding: 0;
+  max-width: initial;
+  box-shadow: 0 0.15rem 1.75rem rgba(33, 40, 50, 0.1490196078);
+}
+.card .badge {
+  color: white;
+}
+.card .btn-group-sm > .btn, .card .btn-sm {
+  font-size: 11px;
+}
+.card .card-header {
+  color: #0061f2;
+}
+
+.bc-smart-table-wrap .bc-smart-table .skeleton span {
+  width: calc(100% - 5px);
+  height: 24px;
+  margin: 5px 0;
+  border-radius: 3px;
+  background-image: linear-gradient(90deg, #ddd 0, #e8e8e8 40px, #ddd 80px);
+  background-size: 600px;
+  animation: shine-lines-table 1.6s infinite linear;
+  display: inline-block;
+  min-width: 15px;
+}
+.bc-smart-table-wrap .bc-smart-table td {
+  vertical-align: middle;
+}
+.bc-smart-table-wrap .bc-smart-table td.sm {
+  width: 100px;
+}
+.bc-smart-table-wrap .bc-smart-table td.xs {
+  width: 50px;
+}
+.bc-smart-table-wrap .bc-smart-table td.xss {
+  width: 25px;
+}
+.bc-smart-table-wrap .bc-smart-table tbody tr {
+  cursor: move;
+}
+
+/*# sourceMappingURL=styles.css.map */
