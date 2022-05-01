@@ -12,7 +12,7 @@
 		}
 		
 		public function display(){
-			include_once WPV_Settings::plugin()['path'] . "templates/admin/admin-page.php";
+			include_once WPV_Settings::plugin()['path'] . "_core/templates/admin/admin-page.php";
 		}
 		
 	}
