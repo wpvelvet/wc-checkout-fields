@@ -1,9 +1,16 @@
 <?php
 	
-	include_once WPV_Settings::plugin()['path'] . "_func/wc-field-record.php";
-	include_once WPV_Settings::plugin()['path'] . "_func/api.php";
+	include_once WPVV_Settings::plugin()['path'] . "_func/wc-field-record.php";
+	include_once WPVV_Settings::plugin()['path'] . "_func/api.php";
 	
 	
+	
+	// Add the vue component
+	add_action('wp_velvet_admin_vue_scripts', function(){
+	?>
+		<script src="<?=WPVV_Settings::plugin()['url']?>/_func/_/admin/wc-checkout-fields.js ?>"></script>
+	<?php
+	});
 	
 	// Register Custom Post Type
 	add_action( 'init', function () {
@@ -18,7 +25,7 @@
 			'rewrite' => true,
 			'query_var' => true,
 		);
-		register_post_type( 'wpv_wcf', $public_pt_args );
+		register_post_type( 'wpvv_wcf', $public_pt_args );
 	}, 0 );
 	
 	// Hook to add/update fields
@@ -26,12 +33,19 @@
 	function wpvAddWCFieldsToCheckout($default){
 		
 		
-		/* @var WPV_WC_Field $WPV_WC_Field */
-		$WPV_WC_Field = $GLOBALS['WPV_WC_Field'];
-		$fields = $WPV_WC_Field->getAll();
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
+		$fields = $WPVV_WC_Field->getAll();
 		
 		foreach ($fields as $field){
 			$section = $field->meta['section'];
+			if( $WPVV_WC_Field->isDisabled($field) ){
+				if( $WPVV_WC_Field->isWooMainField($field) && $default[$section][$field->post_name] ){
+					unset($default[$section][$field->post_name]);
+				}
+				continue;
+			}
+			
 			if( isset($default[$section]) ) {
 				$data = [
 					'type'  => $field->meta['type'],
@@ -61,9 +75,52 @@
 	}
 	
 	
-	add_action('woocommerce_checkout_process', 'wpvValidateFields');
-	function wpvValidateFields() {
-		$phone_number = $_POST['---your-phone-field-name---'];
-		// your function's body above, and if error, call this wc_add_notice
-		wc_add_notice( __( 'Your phone number is wrong.' ), 'error' );
+	add_action( 'woocommerce_checkout_update_order_meta', 'wpvSaveOrderMetaFields' );
+	function wpvSaveOrderMetaFields( $order_id ) {
+		
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
+		$allFields = $WPVV_WC_Field->getAll();
+		$fields = [];
+		
+		// main fields are handled by WooCommerce so we skip them
+		// we also only handle post meta fields in here
+		foreach ($allFields as $key => $field){
+			if( !$WPVV_WC_Field->isWooMainField($field) && $WPVV_WC_Field->isPostMetaField($field) ){
+				$fields[] = $field;
+			}
+		}
+		
+		foreach ($fields as $field){
+			$fieldName = $field->post_name;
+			if ( isset( $_POST[$fieldName] ) ) {
+				update_post_meta( $order_id, $fieldName, sanitize_text_field( $_POST[$fieldName] ) );
+			}
+		}
+	}
+	
+	add_action( 'woocommerce_checkout_update_user_meta', 'wpvSaveUserMetaFields' );
+	function wpvSaveUserMetaFields( $customer_id ) {
+		if( empty($customer_id) ) return;
+		
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
+		$allFields = $WPVV_WC_Field->getAll();
+		$fields = [];
+		
+		// main fields are handled by WooCommerce so we skip them
+		// we also only handle post meta fields in here
+		foreach ($allFields as $key => $field){
+			if( !$WPVV_WC_Field->isWooMainField($field) && $WPVV_WC_Field->isUserMetaField($field) ){
+				$fields[] = $field;
+			}
+		}
+		
+		
+		foreach ($fields as $field){
+			$fieldName = $field->post_name;
+			if ( isset( $_POST[$fieldName] ) ) {
+				update_user_meta( $customer_id, $fieldName, sanitize_text_field( $_POST[$fieldName] ) );
+			}
+		}
 	}

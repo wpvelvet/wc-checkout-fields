@@ -7,22 +7,22 @@ div#wpbody-content > .notice {
   display: none;
 }
 
-#bc-app #bc-content .content-featured {
+#wpvelvet-app #wpvelvet-content .content-featured {
   color: #fff;
   font-size: 30px;
   background-color: #0061f2 !important;
   background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 0.8) 100%) !important;
 }
-#bc-app #bc-content .content-featured h2 {
+#wpvelvet-app #wpvelvet-content .content-featured h2 {
   color: #fff;
 }
-#bc-app #bc-content .content-featured .light {
+#wpvelvet-app #wpvelvet-content .content-featured .light {
   color: rgba(255, 255, 255, 0.4509803922);
 }
-#bc-app #bc-content .content-featured .sub-title {
+#wpvelvet-app #wpvelvet-content .content-featured .sub-title {
   font-size: 14px;
 }
-#bc-app #bc-content .table, #bc-app #bc-content .pagination, #bc-app #bc-content .form-control, #bc-app #bc-content .btn {
+#wpvelvet-app #wpvelvet-content .table, #wpvelvet-app #wpvelvet-content .pagination, #wpvelvet-app #wpvelvet-content .form-control, #wpvelvet-app #wpvelvet-content .btn {
   font-size: 12px;
 }
 

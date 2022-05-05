@@ -3,9 +3,10 @@
 	// Get Records
 	add_action( 'wp_ajax_bc_wcf_fields', function () {
 		
-		/* @var WPV_WC_Field $WPV_WC_Field */
-		$WPV_WC_Field = $GLOBALS['WPV_WC_Field'];
-		$results      = $WPV_WC_Field->getSection( $_REQUEST['f__section__is'] );
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
+		$section = sanitize_text_field($_REQUEST['f__section__is']);
+		$results      = $WPVV_WC_Field->getSection( $section );
 		
 		wp_send_json_success( $results );
 		
@@ -17,11 +18,11 @@
 		
 		if( empty($_REQUEST['id']) ) wp_send_json_error('Id is a required field [ERROR:API:1002]');
 		
-		$id = $_REQUEST['id'];
+		$id = intval($_REQUEST['id']);
 		
-		/* @var WPV_WC_Field $WPV_WC_Field */
-		$WPV_WC_Field = $GLOBALS['WPV_WC_Field'];
-		wp_send_json_success($WPV_WC_Field->get($id));
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
+		wp_send_json_success($WPVV_WC_Field->get($id));
 		
 	});
 	
@@ -30,11 +31,11 @@
 		
 		if( empty($_REQUEST['id']) ) wp_send_json_error('Id is a required field [ERROR:API:1002]');
 		
-		$id = $_REQUEST['id'];
+		$id = intval($_REQUEST['id']);
 		
-		/* @var WPV_WC_Field $WPV_WC_Field */
-		$WPV_WC_Field = $GLOBALS['WPV_WC_Field'];
-		$WPV_WC_Field->remove($id);
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
+		$WPVV_WC_Field->remove($id);
 		wp_send_json_success('Record Removed');
 		
 	});
@@ -46,21 +47,21 @@
 		$body = json_decode(base64_decode($_REQUEST['body']), ARRAY_A);
 		
 		
-		/* @var WPV_WC_Field $WPV_WC_Field */
-		$WPV_WC_Field = $GLOBALS['WPV_WC_Field'];
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
 		
 		if( !empty($body['ID']) ){ // update record
-			$WPV_WC_Field->update($body, $body['ID']);
+			$WPVV_WC_Field->update($body, $body['ID']);
 		}elseif( !empty($body[0]) ){ // multiple records to update
 			foreach ($body as $record){
 				$id = false;
 				if( !empty($record['ID']) ){
-					$id = $record['ID'];
+					$id = intval($record['ID']);
 				}
-				$WPV_WC_Field->update($record, $id);
+				$WPVV_WC_Field->update($record, $id);
 			}
 		}else{// create new record
-			$WPV_WC_Field->update($body);
+			$WPVV_WC_Field->update($body);
 		}
 		
 		wp_send_json_success('Saved');
@@ -70,12 +71,12 @@
 	// Import Default fields
 	add_action( 'wp_ajax_bc_wc_checkout_import_default', function () {
 		
-		/* @var WPV_WC_Field $WPV_WC_Field */
-		$WPV_WC_Field = $GLOBALS['WPV_WC_Field'];
+		/* @var WPVV_WC_Field $WPVV_WC_Field */
+		$WPVV_WC_Field = $GLOBALS['WPVV_WC_Field'];
 		
 		remove_filter( 'woocommerce_checkout_fields', 'bcAddWCFieldsToCheckout' );
 		$defaultFields      = WC()->checkout()->get_checkout_fields();
-		$existingFields     = $WPV_WC_Field->getAll();
+		$existingFields     = $WPVV_WC_Field->getAll();
 		$existingFieldsKeys = array_column( $existingFields, 'post_name' );
 		
 		foreach ( $defaultFields as $section => $fields ) {
@@ -103,7 +104,7 @@
 					];
 					
 					
-					$WPV_WC_Field->update( $body );
+					$WPVV_WC_Field->update( $body );
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 <?php
 	
-	class WPV_Settings{
+	class WPVV_Settings{
 		
 		static $id = "wpv";
 		static $title = "WP Velvet";
@@ -9,8 +9,8 @@
 			return [
 				'title' => self::$title,
 				'menu_title' => self::$title,
-				'capabilities' => apply_filters('wpv_admin_menu_capabilities', 'edit_posts'),
-				'slug' => apply_filters('wpv_admin_menu_slug', 'wpvelvet'),
+				'capabilities' => apply_filters('WPVV_admin_menu_capabilities', 'edit_posts'),
+				'slug' => apply_filters('WPVV_admin_menu_slug', 'wpvelvet'),
 			];
 		}
 		

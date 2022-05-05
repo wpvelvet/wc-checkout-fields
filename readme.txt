@@ -1,95 +1,67 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://example.com/
-Tags: tag1, tag2
-Requires at least: 4.7
-Tested up to: 5.4
-Stable tag: 4.3
-Requires PHP: 7.0
+=== WC Checkout Fields Manager ===
+Contributors: WPVelvet
+Donate link: https://www.wpvelvet.com/
+Tags: checkout fields, woocommerce checkout fields manager, checkout fields editor, checkout fields reorder, checkout form customization, checkout, woocommerce checkout designer
+Requires at least: 4.9
+Tested up to: 5.9
+Stable tag: 1.0
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+WC Checkout Fields Manager - A free solution to customize and enhance your WooCommerce Checkout Page.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+== Checkout Fields Manager ==
+WC Checkout Fields Manager allows you to create custom fields with up to 10 different types to enhance your Checkout process.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+== Main Features ==
 
-A few notes about the sections above:
+= Import Default WooCommerce Fields =
+With just a click you have the ability to import all the existing/default WooCommerce fields so that you can customize, re-order or change the default logic.
 
-* "Contributors" is a comma separated list of wordpress.org usernames
-* "Tags" is a comma separated list of tags that apply to the plugin
-* "Requires at least" is the lowest version that the plugin will work on
-* "Tested up to" is the highest version that you've *successfully used to test the plugin*
-* Stable tag must indicate the Subversion "tag" of the latest stable version
+= Create Field(s) =
+Create new fields to customize your checkout process.
 
-Note that the `readme.txt` value of stable tag is the one that is the defining one for the plugin.  If the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used for displaying information about the plugin.
+= Edit Field(s) =
+Edit new or existing fields to match your requirements.
 
-If you develop in trunk, you can update the trunk `readme.txt` to reflect changes in your in-development version, without having that information incorrectly disclosed about the current stable version that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+= Delete Field(s) =
+Delete custom fields, in order to delete default WooCommerce fields check next section.
 
-If no stable tag is provided, your users may not get the correct version of your code.
+= Disable Field(s) =
+Disabling a custom field will keep all your settings for later use. This feature also allows you to disable WooCommerce default custom fields.
 
-== Frequently Asked Questions ==
 
-= A question that someone might have =
+== Installation ==
+= Minimum Requirements =
+* WooCommerce 3.0 or greater
+* WordPress 4.9 or greater
 
-An answer to that question.
+= Automatic installation =
+1. Log in to your WordPress dashboard.
+2. Navigate to the Plugins menu, and click "Add New".
+3. Search and locate 'WC Checkout Fields Manager' plugin.
+4. Click 'Install Now', and WordPress will take it from there.
 
-= What about foo bar? =
+= Manual installation =
+Manual installation method requires downloading the 'WC Checkout Fields Manager' plugin and uploading it to your web server via your FTP application. The WordPress codex contains [instructions on how to do this here](https://wordpress.org/support/article/managing-plugins/#manual-plugin-installation).
 
-Answer to foo bar dilemma.
 
 == Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Screenshots are stored in the /assets directory.
-2. This is the second screen shot
+1. WP Velvet > WC Checkout Fields Manager
+2. Add New Field
+3. Create New Field
+4. Re-Order Fields
 
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== A brief Markdown Example ==
-
-Markdown is what the parser uses to process much of the readme file.
-
-[markdown syntax]: https://daringfireball.net/projects/markdown/syntax
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Links require brackets and parenthesis:
-
-Here's a link to [WordPress](https://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax]. Link titles are optional, naturally.
-
-Blockquotes are email style:
-
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-And Backticks for code:
-
-`<?php code(); ?>`
+* Initial release
+* Ability to adjust default WooCommerce Fields
+* Add new custom fields
+* Edit existing and new fields
+* Remove custom fields & disable existing fields
+* Save field values on order meta or user meta
+* Re-Order the checkout fields

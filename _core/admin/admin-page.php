@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.22.0/bootstrap-vue.min.css"/>
-<link rel="stylesheet" href="<?=WPV_Settings::plugin()['url']?>_/admin/styles.css?time=<?= time() ?>"/>
+<link rel="stylesheet" href="<?=WPVV_Settings::plugin()['url']?>_/admin/styles.css?time=<?= time() ?>"/>
 
-<div id="bc-app">
+<div id="wpvelvet-app">
 	
 	<nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white">
-		<a class="navbar-brand" href="https://www.wpvelvet.com" target="_blank"><?= WPV_Settings::$title ?></a>
+		<a class="navbar-brand" href="https://www.wpvelvet.com" target="_blank"><?= WPVV_Settings::$title ?></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -17,7 +17,7 @@
 					<a class="nav-link"  @click.prevent="setPage('home')" href="#">Home</a>
 				</li>
 				<li class="nav-item" :class="{ active: checkActivePage('wc-checkout-fields') }">
-					<a class="nav-link" @click.prevent="setPage('wc-checkout-fields')" href="#">WC Checkout Fields</a>
+					<a class="nav-link" @click.prevent="setPage('wc-checkout-fields')" href="#">WC Checkout Fields Manager</a>
 				</li>
 			</ul>
 			
@@ -28,7 +28,7 @@
 		</div>
 	</nav>
 	
-	<div id="bc-content">
+	<div id="wpvelvet-content">
 		<bc-home v-if="checkActivePage('home')"></bc-home>
 		<bc-wc-checkout-fields v-if="checkActivePage('wc-checkout-fields')"></bc-wc-checkout-fields>
 	</div>
@@ -49,4 +49,6 @@
 <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
 
-<script src="<?=WPV_Settings::plugin()['url']?>/_/admin/vueApp.js?time=<?= time() ?>"></script>
+<script src="<?=WPVV_Settings::plugin()['url']?>/_/admin/base.js ?>"></script>
+<?php do_action('wp_velvet_admin_vue_scripts') ?>
+<script src="<?=WPVV_Settings::plugin()['url']?>/_/admin/vueApp.js ?>"></script>

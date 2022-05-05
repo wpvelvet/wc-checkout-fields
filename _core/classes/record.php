@@ -1,6 +1,6 @@
 <?php
 	
-	class WPV_Record {
+	class WPVV_Record {
 		public $type = 'default';
 		
 		public function getAll( $filters = [], $orderBy = FALSE, $orderByDirection = 'DESC', $extraArgs = [] ) {
@@ -162,4 +162,5 @@
 				update_post_meta( $id, $key, $value );
 			}
 		}
+		
 	}
